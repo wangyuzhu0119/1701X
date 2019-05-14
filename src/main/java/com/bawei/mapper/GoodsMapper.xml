@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.bawei.mapper.GoodsMapper">
+
+	<select id="getGoodsList" resultType="map">
+		select * from tb_goods g LEFT JOIN tb_type t on g.tid=t.tid
+		LEFT JOIN tb_brand b on g.bid=b.bid
+	</select>
+	
+	<select id="getBrandList" resultType="map">
+		select * from tb_brand
+	</select>
+	
+	<select id="getTypeList" resultType="map">
+		select * from tb_type
+	</select>
+	
+	<insert id="addGoods">
+		insert into tb_goods set gname=#{gname},ename=#{ename},bid=#{bid},tid=#{tid},size=#{size},price=#{price},sum=#{sum},bq=#{bq}
+	</insert>
+</mapper>
